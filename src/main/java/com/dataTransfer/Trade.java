@@ -3,16 +3,30 @@ package com.dataTransfer;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-
+@Getter @Setter
+@ToString
+@NoArgsConstructor
 public class Trade {
 	@Id
 	@GeneratedValue
 	private int id;
+	@NotNull
 	private int type;
+	@Min(message = "Price Cannot Be Negetive", value = 0)
 	private int price;
+	@NotBlank
 	private String ticker;
+	@Min(message = "Minimum Stocks should be 1", value = 1)
 	private int count;
 
 	public Trade(final int type, final int price, final String ticker, final int count) {
@@ -21,56 +35,4 @@ public class Trade {
 		this.ticker = ticker;
 		this.count = count;
 	}
-
-	public Trade() {
-	}
-
-	@Override
-	public String toString() {
-		return "Trade [id=" + id + ", type=" + type + ", price=" + price + ", ticker=" + ticker + ", count=" + count
-				+ "]";
-	}
-
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the type
-	 */
-	public int getType() {
-		return type;
-	}
-
-	/**
-	 * @return the price
-	 */
-	public int getPrice() {
-		return price;
-	}
-
-	/**
-	 * @return the ticker
-	 */
-	public String getTicker() {
-		return ticker;
-	}
-
-	/**
-	 * @return the count
-	 */
-	public int getCount() {
-		return count;
-	}
-
 }

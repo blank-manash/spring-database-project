@@ -10,4 +10,6 @@ public interface SecurityService {
 
 	public List<SecurityEntry> getAllSecurity();
 
+	public double getReturns();
+
 }

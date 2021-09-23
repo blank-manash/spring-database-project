@@ -20,10 +20,16 @@ public class SecurityController {
 	public SecurityController(final SecurityService service) {
 		this.service = service;
 	}
-	
-	@GetMapping("/allSecurity")
+	/*
+	 * Return Updated Securites;
+	 */
+	@GetMapping("/holdings")	
 	public List<SecurityEntry> getAllSecurity() {
 		return service.getAllSecurity();
+	}
+	@GetMapping("/returns")
+	public double getReturns() {
+		return service.getReturns();
 	}
 	
 	@PostMapping("/add")
